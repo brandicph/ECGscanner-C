@@ -6,8 +6,8 @@
 #include "globals.h"
 #include "utils.h"
 
-int getNextData(); // Please implement me in Sensor.c
-int movAvg(int ym0, int xold, int xnew, int N);
+static int isPeak(int *x);
 
+extern int detection(int value);
 
 #endif

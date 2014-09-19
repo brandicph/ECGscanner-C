@@ -83,13 +83,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="filter.h" />
+    <ClInclude Include="filters.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="peaks.h" />
     <ClInclude Include="sensor.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="globals.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="filter.c" />
+    <ClCompile Include="filters.c" />
+    <ClCompile Include="peaks.c" />
     <ClCompile Include="sensor.c" />
     <ClCompile Include="utils.c" />
   </ItemGroup>
