@@ -36,9 +36,10 @@ int derivativeFilter(int *x){
 //save last value before override so we can calculate the mean O(c)
 static int squared_old = 0;
 static int squared_new = 0;
-int squaredFilter(int *x){
-	squared_old = x[mod(GLOBAL_COUNT, MAX_Y_DER)];
-	squared_new = squared_old * squared_old;
+int squaredFilter(int *x, int *y){
+	int xm0 = x[mod(GLOBAL_COUNT, MAX_Y_DER)];
+	squared_old = y[mod(GLOBAL_COUNT, MAX_Y_SQR)];
+	squared_new = xm0 * xm0;
 	return squared_new;
 }
 
@@ -51,7 +52,7 @@ int filter(int value){
 	y_low[GLOBAL_COUNT % MAX_Y_LOW] = lowPassFilter(x, y_low);			//LOW PASS FILTER
 	y_high[GLOBAL_COUNT % MAX_Y_HIGH] = highPassFilter(y_low, y_high);	//HIGH PASS FILTER
 	y_der[GLOBAL_COUNT % MAX_Y_DER] = derivativeFilter(y_high);			//DERIVATIVE FILTER
-	y_sqr[GLOBAL_COUNT % MAX_Y_SQR] = squaredFilter(y_der);				//SQUARED FILTER
+	y_sqr[GLOBAL_COUNT % MAX_Y_SQR] = squaredFilter(y_der, y_sqr);		//SQUARED FILTER
 	y_mwi = movingWindow(y_mwi, 30);									//MOVING WINDOW INTEGRATION;
 
 	//Just for debugging

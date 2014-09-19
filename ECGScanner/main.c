@@ -17,6 +17,5 @@ int main()
 		global_count();
 
 	}
-
 	return 0;
 }
