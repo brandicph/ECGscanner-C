@@ -3,7 +3,7 @@
 #include "sensor.h"
 #include "utils.h"
 
-int main()
+int main(void)
 {
 
 	int i;
