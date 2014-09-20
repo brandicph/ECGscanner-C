@@ -16,8 +16,4 @@ int getNextData(){
 	return 0;
 }
 
-int movAvg(int ym0, int xold, int xnew, int N){
-	return 0;
-}
-
 
