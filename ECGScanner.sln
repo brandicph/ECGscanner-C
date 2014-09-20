@@ -17,6 +17,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testfiles", "Testfiles", "{
 		Testfiles\x_sqr.txt = Testfiles\x_sqr.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{5A4BCF03-59F3-4C1C-BE84-57116723E6BA}"
+	ProjectSection(SolutionItems) = preProject
+		Diagrams\QRS_algorithm_flow_chart.pdf = Diagrams\QRS_algorithm_flow_chart.pdf
+		Diagrams\QRS_algorithm_flow_chart.vsdx = Diagrams\QRS_algorithm_flow_chart.vsdx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
