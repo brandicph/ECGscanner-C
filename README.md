@@ -41,10 +41,10 @@ latex: y_n=\frac{1}{N}(x_{n-(N-1)}+x_{n-(N-2)}+\ldots+x_{n})
 -->
 ![equation](http://www.sciweavers.org/upload/Tex2Img_1411310840/eqn.png)
 
-#### QRS detection algorithm
+## QRS detection algorithm
 Description of the QRS detection algorithm
 
-### Flow diagram
+#### Flow diagram
 The following flow diagram is showing the different stages and decision making in the QRS detection algorithm. Furtheremore the variables being set at initialization, peak detection and R peak detection.
 
 ![](Diagrams/QRS_algorithm_flow_chart.png?raw=true)
