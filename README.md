@@ -5,11 +5,13 @@ The main goal of this project is to learn the programming language C but also th
 ## Filters
 
 #### Low-pass filter
-Description of the low-pass filter
+The low-pass filter is a filter hat passes signals with a frequency lower that a certain cut-off frenquency and group delay that is higer than the cut-off frequency. In short the filter takes some of the high frequencies that is not neeed and discharge them. The formula below will take the signal and cut-off the frequencies higer than 12 Hz and a group delay of 25ms.
 <!---
 latex: y_n=2y_{n-1}-y_{n-2}+\frac{1}{32}\cdot(x_{n}-2x_{n-6}+x_{n-12})
 -->
 ![equation](http://www.sciweavers.org/upload/Tex2Img_1411309664/eqn.png)
+
+In the formula, x is the signal data, y is the resulting filtered signal and n refers to the n'th sample.
 
 #### High-pass filter
 Description of the high-pass filter
