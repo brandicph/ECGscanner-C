@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ECGScanner", "ECGScanner\ECGScanner.vcxproj", "{DF73237A-4E96-4BA4-BEBB-5FB749C83264}"
 EndProject
@@ -20,6 +20,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{5A4BCF03-59F3-4C1C-BE84-57116723E6BA}"
 	ProjectSection(SolutionItems) = preProject
 		Diagrams\QRS_algorithm_flow_chart.pdf = Diagrams\QRS_algorithm_flow_chart.pdf
+		Diagrams\QRS_algorithm_flow_chart.png = Diagrams\QRS_algorithm_flow_chart.png
 		Diagrams\QRS_algorithm_flow_chart.vsdx = Diagrams\QRS_algorithm_flow_chart.vsdx
 	EndProjectSection
 EndProject
