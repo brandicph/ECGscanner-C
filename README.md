@@ -14,12 +14,13 @@ latex: y_n=2y_{n-1}-y_{n-2}+\frac{1}{32}\cdot(x_{n}-2x_{n-6}+x_{n-12})
 In the formula, x is the signal data, y is the resulting filtered signal and n refers to the n'th sample.
 
 #### High-pass filter
-Description of the high-pass filter
+The high-pass filter is very similar to the low-pass filter. Compared to the low-pass filter, the high-pass filter cut-off the low frequencies instead of blocking out the high frequencies. The formula below will ensure the signal to be centered around the 5-20 Hz approximately.
 <!---
 latex: y_n=y_{n-1}-\frac{x_{n}}{32}+x_{n-16}-x_{n-17}+\frac{x_{n-32}}{32}
 -->
 ![equation](http://www.sciweavers.org/upload/Tex2Img_1411309614/eqn.png)
 
+As previous the x is the signal data, y is the resulting filtered signal and n refers to the n'th sample.
 
 #### Derivative
 Description of the derivative
