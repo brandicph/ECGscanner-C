@@ -9,7 +9,7 @@ The low-pass filter is a filter hat passes signals with a frequency lower that a
 <!---
 latex: y_n=2y_{n-1}-y_{n-2}+\frac{1}{32}\cdot(x_{n}-2x_{n-6}+x_{n-12})
 -->
-![equation](http://www.sciweavers.org/upload/Tex2Img_1411309664/eqn.png)
+![equation](http://www.sciweavers.org/upload/Tex2Img_1411488108/eqn.png)
 
 In the formula, x is the signal data, y is the resulting filtered signal and n refers to the n'th sample.
 
@@ -18,7 +18,7 @@ The high-pass filter is very similar to the low-pass filter. Compared to the low
 <!---
 latex: y_n=y_{n-1}-\frac{x_{n}}{32}+x_{n-16}-x_{n-17}+\frac{x_{n-32}}{32}
 -->
-![equation](http://www.sciweavers.org/upload/Tex2Img_1411309614/eqn.png)
+![equation](http://www.sciweavers.org/upload/Tex2Img_1411488141/eqn.png)
 
 As previous the x is the signal data, y is the resulting filtered signal and n refers to the n'th sample.
 
