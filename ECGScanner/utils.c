@@ -6,7 +6,7 @@
 
 int mod(int a, int b)
 {
-   if(b < 0) //you can check for b == 0 separately and do what you want
+   if(b < 0)
 	 return mod(-a, -b);
    int ret = a % b;
    if(ret < 0)

@@ -24,24 +24,14 @@ static int RR_MISS			= 352;	//If threshold1 if set to high
 static int RR_Recent[MAX_RR_RECENT]			= { 100, 100, 100, 100, 100, 100, 100, 100 }; //The 8 latest known intervals between Rpeaks
 static int RR_Recent_OK[MAX_RR_RECENT_OK]	= { 212, 212, 212, 212, 212, 212, 212, 212 }; //The 8 latest intervals with Rpeak higher than threshold1
 
-//Estimated value - further explanation in the report
 
 static int x[MAX_X] = { 0 }; //three latest incomming values - needed for peak detection
+static int PEAKS[MAX_PEAKS]; //List of all peaks
 
 static int interval			= 0;
 static int peak_count		= 0;
 static int Rpeak_count		= 0;
 static int threshold_count	= 0;
-
-typedef struct Peak {
-	int value;
-	int interval;
-} Peak;
-static Peak *p = NULL;
-static Peak PEAKS[MAX_PEAKS]; //List of all peaks
-
-static int gl_count = 0;
-
 
 int detection(int value){
 
@@ -51,7 +41,7 @@ int detection(int value){
 	if (isPeak(next)){
 
 		int peak = getPeak();
-		savePeak(peak, interval);
+		savePeak(peak);
 
 		if (peak > THRESHOLD1){
 			//Time between peaks
@@ -78,7 +68,7 @@ int detection(int value){
 				int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
 				float pulse = (60.0 * GLOBAL_SAMPLE_RATE / RR);
 
-				printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
+				//printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
 
 				//average temp for moving average calculation
 				RR_Average1_temp = RR;
@@ -128,7 +118,6 @@ int detection(int value){
 		}
 		count_peak();
 	}
-	gl_count++;
 	count_interval();
 }
 
@@ -137,7 +126,7 @@ int searchBack(){
 	int i = 0;
 	int peak2;
 	while (i < MAX_PEAKS){
-		peak2 = PEAKS[mod(peak_count - i, MAX_PEAKS)].value;
+		peak2 = PEAKS[mod(peak_count - i, MAX_PEAKS)];
 		if (peak2 > THRESHOLD2)
 			return 1;
 		i++;
@@ -162,9 +151,8 @@ void saveRRInRR_Recent_OK(int RR){
 	RR_Recent_OK[mod(Rpeak_count, MAX_RR_RECENT_OK)] = RR;
 }
 
-void savePeak(int peak, int interval){
-	PEAKS[mod(peak_count, MAX_PEAKS)].value = peak;
-	PEAKS[mod(peak_count, MAX_PEAKS)].interval = interval;
+void savePeak(int peak){
+	PEAKS[mod(peak_count, MAX_PEAKS)] = peak;
 }
 
 int calculateRR(){

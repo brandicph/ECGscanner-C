@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include "globals.h"
 #include "utils.h"
+#include "test.h"
 
 static int lowPassFilter(int *x, int *y);
 static int highPassFilter(int *x, int *y);

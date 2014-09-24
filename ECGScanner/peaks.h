@@ -12,7 +12,7 @@ static int getPeak();
 static int nextValue(int value);
 static void saveRRInRR_Recent(int RR);
 static void saveRRInRR_Recent_OK(int RR);
-static void savePeak(int peak, int interval);
+static void savePeak(int peak);
 static int calculateRR();
 static int count_peak();
 static int count_Rpeak();

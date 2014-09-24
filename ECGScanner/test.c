@@ -25,3 +25,22 @@ void testData(char *filename, int actual){
 		ERRORS++;
 	}
 }
+
+int run_Test(Test *t, char *filename, int actual){
+	if (t->file == NULL){
+		t->file = fopen(filename, "r");
+		t->value = 0;
+		t->read = 0;
+		t->errors = 0;
+	}
+
+	if (t->read = fscanf(t->file, "%i\n", &t->value) != EOF){
+
+		if (t->value != actual)
+			t->errors++;
+		return t->value;
+	}
+
+	fclose(t->file);
+	return 0;
+}
