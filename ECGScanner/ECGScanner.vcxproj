@@ -87,6 +87,7 @@
     <ClInclude Include="globals.h" />
     <ClInclude Include="peaks.h" />
     <ClInclude Include="sensor.h" />
+    <ClInclude Include="test.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +96,7 @@
     <ClCompile Include="filters.c" />
     <ClCompile Include="peaks.c" />
     <ClCompile Include="sensor.c" />
+    <ClCompile Include="test.c" />
     <ClCompile Include="utils.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

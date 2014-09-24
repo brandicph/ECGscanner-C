@@ -13,8 +13,8 @@ static int der[MAX_DER] = { 0 };
 static int sqr[MAX_SQR] = { 0 };
 static int mwi = 0;
 
-
 int lowPassFilter(int *x, int *y){
+
 	int ym1 = y[mod(GLOBAL_COUNT - 1, MAX_LOW)];
 	int ym2 = y[mod(GLOBAL_COUNT - 2, MAX_LOW)];
 	int xm0 = x[mod(GLOBAL_COUNT, MAX_X)];
@@ -24,12 +24,12 @@ int lowPassFilter(int *x, int *y){
 }
 
 int highPassFilter(int *x, int *y){
-	int ym0 = y[mod(GLOBAL_COUNT - 1, MAX_HIGH)];
+	int ym1 = y[mod(GLOBAL_COUNT - 1, MAX_HIGH)];
 	int xm0 = x[mod(GLOBAL_COUNT, MAX_LOW)];
 	int xm16 = x[mod(GLOBAL_COUNT - 16, MAX_LOW)];
 	int xm17 = x[mod(GLOBAL_COUNT - 17, MAX_LOW)];
 	int xm32 = x[mod(GLOBAL_COUNT - 32, MAX_LOW)];
-	return (ym0 + xm16 - xm17 + ((xm32 - xm0) / 32));
+	return (ym1 - (xm0/32) + xm16 - xm17 + (xm32/ 32));
 }
 
 int derivativeFilter(int *x){
@@ -62,14 +62,20 @@ int filter(int value){
 	sqr[GLOBAL_COUNT % MAX_SQR] = squaredFilter(der, sqr);		//SQUARED FILTER
 	mwi = movingWindow(mwi, 30);									//MOVING WINDOW INTEGRATION;
 
+	//testData("../Testfiles/x_low.txt", low[GLOBAL_COUNT % MAX_LOW]);
+	//testData("../Testfiles/x_high.txt", high[GLOBAL_COUNT % MAX_HIGH]);
+	//testData("../Testfiles/x_der.txt", der[GLOBAL_COUNT % MAX_DER]);
+	//testData("../Testfiles/x_sqr.txt", sqr[GLOBAL_COUNT % MAX_SQR]);
+	testData("../Testfiles/x_mwi_div_pre.txt", mwi);
+
 	//Just for debugging
 	//printf("X: %d\n", x[GLOBAL_COUNT % MAX_X]);
-	printf("LOW: %d\n", low[GLOBAL_COUNT % MAX_LOW]);
-	printf("HIGH: %d\n", high[GLOBAL_COUNT % MAX_HIGH]);
-	printf("DER: %d\n", der[GLOBAL_COUNT % MAX_DER]);
-	printf("SQR: %d\n", sqr[GLOBAL_COUNT % MAX_SQR]);
-	printf("MWI: %d\n", mwi);
-	printf("\n", "");
+	//printf("LOW: %d\n", low[GLOBAL_COUNT % MAX_LOW]);
+	//printf("HIGH: %d\n", high[GLOBAL_COUNT % MAX_HIGH]);
+	//printf("DER: %d\n", der[GLOBAL_COUNT % MAX_DER]);
+	//printf("SQR: %d\n", sqr[GLOBAL_COUNT % MAX_SQR]);
+	//printf("MWI: %d\n", mwi);
+	//printf("\n", "");
 
 	return mwi;
 }

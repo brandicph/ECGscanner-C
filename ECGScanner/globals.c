@@ -4,8 +4,6 @@ Globals globals;
 
 int GLOBAL_COUNT = 0;
 
-int SAMPLE_RATE = 250; //(sampling rate is 250 samples pr. second (250 Hz)
-
 #define MAX_X 13
 #define MAX_LOW 33
 #define MAX_HIGH 5

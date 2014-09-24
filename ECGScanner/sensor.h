@@ -6,8 +6,6 @@
 #include "globals.h"
 #include "utils.h"
 
-int getNextData(); // Please implement me in Sensor.c
-int movAvg(int ym0, int xold, int xnew, int N);
-
+extern int getNextData(); // Please implement me in Sensor.c
 
 #endif
