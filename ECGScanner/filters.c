@@ -6,15 +6,14 @@
 #define MAX_DER 1
 #define MAX_SQR 30
 
-static int x[MAX_X] = { 0 };
-static int low[MAX_LOW] = { 0 };
-static int high[MAX_HIGH] = { 0 };
-static int der[MAX_DER] = { 0 };
-static int sqr[MAX_SQR] = { 0 };
-static int mwi = 0;
+static int x[MAX_X]			= { 0 };
+static int low[MAX_LOW]		= { 0 };
+static int high[MAX_HIGH]	= { 0 };
+static int der[MAX_DER]		= { 0 };
+static int sqr[MAX_SQR]		= { 0 };
+static int mwi				= 0;
 
 int lowPassFilter(int *x, int *y){
-
 	int ym1 = y[mod(GLOBAL_COUNT - 1, MAX_LOW)];
 	int ym2 = y[mod(GLOBAL_COUNT - 2, MAX_LOW)];
 	int xm0 = x[mod(GLOBAL_COUNT, MAX_X)];
@@ -55,27 +54,18 @@ int movingWindow(int ym0, int N){
 }
 
 int filter(int value){
-	x[GLOBAL_COUNT % MAX_X] = value;									//INCOMING VALUE
-	low[GLOBAL_COUNT % MAX_LOW] = lowPassFilter(x, low);			//LOW PASS FILTER
+	x[GLOBAL_COUNT % MAX_X] = value;							//INCOMING VALUE
+	low[GLOBAL_COUNT % MAX_LOW] = lowPassFilter(x, low);		//LOW PASS FILTER
 	high[GLOBAL_COUNT % MAX_HIGH] = highPassFilter(low, high);	//HIGH PASS FILTER
-	der[GLOBAL_COUNT % MAX_DER] = derivativeFilter(high);			//DERIVATIVE FILTER
+	der[GLOBAL_COUNT % MAX_DER] = derivativeFilter(high);		//DERIVATIVE FILTER
 	sqr[GLOBAL_COUNT % MAX_SQR] = squaredFilter(der, sqr);		//SQUARED FILTER
-	mwi = movingWindow(mwi, 30);									//MOVING WINDOW INTEGRATION;
+	mwi = movingWindow(mwi, 30);								//MOVING WINDOW INTEGRATION;
 
-	//testData("../Testfiles/x_low.txt", low[GLOBAL_COUNT % MAX_LOW]);
-	//testData("../Testfiles/x_high.txt", high[GLOBAL_COUNT % MAX_HIGH]);
-	//testData("../Testfiles/x_der.txt", der[GLOBAL_COUNT % MAX_DER]);
-	//testData("../Testfiles/x_sqr.txt", sqr[GLOBAL_COUNT % MAX_SQR]);
-	testData("../Testfiles/x_mwi_div_pre.txt", mwi);
-
-	//Just for debugging
-	//printf("X: %d\n", x[GLOBAL_COUNT % MAX_X]);
-	//printf("LOW: %d\n", low[GLOBAL_COUNT % MAX_LOW]);
-	//printf("HIGH: %d\n", high[GLOBAL_COUNT % MAX_HIGH]);
-	//printf("DER: %d\n", der[GLOBAL_COUNT % MAX_DER]);
-	//printf("SQR: %d\n", sqr[GLOBAL_COUNT % MAX_SQR]);
-	//printf("MWI: %d\n", mwi);
-	//printf("\n", "");
+	//testData("../Testfiles/x_low.txt", low[GLOBAL_COUNT % MAX_LOW]);		//TEST LOW-PASS FILTER
+	//testData("../Testfiles/x_high.txt", high[GLOBAL_COUNT % MAX_HIGH]);	//TEST HIGH-PASS FILTER
+	//testData("../Testfiles/x_der.txt", der[GLOBAL_COUNT % MAX_DER]);		//TEST DERIVATIVE
+	//testData("../Testfiles/x_sqr.txt", sqr[GLOBAL_COUNT % MAX_SQR]);		//TEST SQUARE FUNCTION
+	//testData("../Testfiles/x_mwi_div_pre.txt", mwi);						//TEST MOWING WINDOW INTEGRATION
 
 	return mwi;
 }

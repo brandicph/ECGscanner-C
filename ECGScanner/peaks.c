@@ -75,7 +75,10 @@ int detection(int value){
 				THRESHOLD1 = NPKF + 0.25 * (SPKF - NPKF);
 				THRESHOLD2 = 0.5 * THRESHOLD1;
 
-				printf("%d %d\n", GLOBAL_COUNT, Rpeak);
+				int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
+				float pulse = (60.0 * GLOBAL_SAMPLE_RATE / RR);
+
+				printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
 
 				//average temp for moving average calculation
 				RR_Average1_temp = RR;

@@ -6,16 +6,13 @@
 int main(void)
 {
 
-	int i;
-
-	for (i = 0; i < 10000; i++){
+	while (GLOBAL_SENSOR_ACTIVE){
 		
 		int next = getNextData();
 		int filteret = filter(next);
 		int detected = detection(filteret);
 
 		global_count();
-
 	}
 	return 0;
 }

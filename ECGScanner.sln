@@ -8,6 +8,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testfiles", "Testfiles", "{7C5C0D80-9ADE-455C-A7C0-B9BA9FA0D868}"
 	ProjectSection(SolutionItems) = preProject
 		Testfiles\ECG.txt = Testfiles\ECG.txt
+		Testfiles\ECG10800K.txt = Testfiles\ECG10800K.txt
+		Testfiles\ECG2700K.txt = Testfiles\ECG2700K.txt
+		Testfiles\ECG5400K.txt = Testfiles\ECG5400K.txt
+		Testfiles\ECG8100K.txt = Testfiles\ECG8100K.txt
+		Testfiles\ECG900K.txt = Testfiles\ECG900K.txt
+		Testfiles\Rpeak.txt = Testfiles\Rpeak.txt
 		Testfiles\x_der.txt = Testfiles\x_der.txt
 		Testfiles\x_high.txt = Testfiles\x_high.txt
 		Testfiles\x_low.txt = Testfiles\x_low.txt

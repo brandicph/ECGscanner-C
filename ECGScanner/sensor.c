@@ -1,18 +1,17 @@
 #include "sensor.h"
 
-static const char filename[] = "../Testfiles/ECG.txt";
 static FILE *file;
 
 int getNextData(){
-	int value, read;
+	int value;
 
 	if (file == NULL)
-		file = fopen (filename, "r");
+		file = fopen(GLOBAL_SENSOR_INPUT, "r");
 
-	if (read = fscanf(file, "%i\n", &value) != EOF)
+	if (GLOBAL_SENSOR_ACTIVE = fscanf(file, "%i\n", &value) != EOF)
 		return value;
 
-	if(!read) fclose(file);
+	fclose(file);
 	return 0;
 }
 

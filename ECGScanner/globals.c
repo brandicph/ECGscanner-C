@@ -1,16 +1,13 @@
 #include "globals.h"
 
-Globals globals;
-
 int GLOBAL_COUNT = 0;
+int GLOBAL_SAMPLE_RATE = 250;
+int GLOBAL_SENSOR_ACTIVE = 1;
+char GLOBAL_SENSOR_INPUT[] = "../Testfiles/ECG.txt";
 
-#define MAX_X 13
-#define MAX_LOW 33
-#define MAX_HIGH 5
-#define MAX_DER 1
-#define MAX_SQR 30
+static int MAX_COUNT = 64350; //MAX_X * MAX_LOW * MAX_HIGH * MAX_DER * MAX_SQR
 
 int global_count(void){
 	//RESET VALUE WHEN COUNTER EQUALS MAX VALUES COMMON DIVISOR
-	return (GLOBAL_COUNT >= (MAX_X * MAX_LOW * MAX_HIGH * MAX_DER * MAX_SQR - 1)) ? 0 : GLOBAL_COUNT++;
+	return (GLOBAL_COUNT >= (MAX_COUNT - 1)) ? 0 : GLOBAL_COUNT++;
 }

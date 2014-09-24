@@ -20,10 +20,7 @@ int getNextData(char *filename){
 void testData(char *filename, int actual){
 	int expected = getNextData(filename);
 
-	if (expected == actual){
-		printf("", "");
-	}
-	else {
+	if (expected != actual){
 		printf("%d : %d\t != %d\n", GLOBAL_COUNT + 1, actual, expected);
 		ERRORS++;
 	}
