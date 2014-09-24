@@ -7,26 +7,26 @@
 
 
 //Initialize variables
-int peak = 0; //Latest found peak
-int Rpeak = 0; //Latest found Rpeak
-int SPKF = 4500; //Estimated value of a Rpeak
-int NPKF = 2000; //Estimated value of a noise peak
-int THRESHOLD1 = 2625; //Lowest threshold of Rpeak
-int THRESHOLD2 = 1312; //If threshold1 is too high at searchback
-int RR = 0; //later: Latest time interval from last Rpeak
-int RR_Average1 = 0; //later: RR_Recent[0..n]/n
-int RR_Average1_temp = 0;
-int RR_Average2 = 0; //later: RR_Recent_OK[0..n]/n
-int RR_Average2_temp = 0;
-int RR_LOW = 0; //Lowest interval of a Rpeak occurrence
-int RR_HIGH = 200; //Highest interval of a Rpeak occurrence
-int RR_MISS = 0; //If threshold1 if set to high
-int RR_Recent[MAX_RR_RECENT] = { 0 }; //The 8 latest known intervals between Rpeaks
-int RR_Recent_OK[MAX_RR_RECENT_OK] = { 0 }; //The 8 latest intervals with Rpeak higher than threshold1
+static int peak = 0; //Latest found peak
+static int Rpeak = 0; //Latest found Rpeak
+static int SPKF = 4500; //Estimated value of a Rpeak
+static int NPKF = 2000; //Estimated value of a noise peak
+static int THRESHOLD1 = 2625; //Lowest threshold of Rpeak
+static int THRESHOLD2 = 1312; //If threshold1 is too high at searchback
+static int RR = 0; //later: Latest time interval from last Rpeak
+static int RR_Average1 = 212; //later: RR_Recent[0..n]/n
+static int RR_Average1_temp = 212;
+static int RR_Average2 = 212; //later: RR_Recent_OK[0..n]/n
+static int RR_Average2_temp = 212;
+static int RR_LOW = 195; //Lowest interval of a Rpeak occurrence
+static int RR_HIGH = 246; //Highest interval of a Rpeak occurrence
+static int RR_MISS = 352; //If threshold1 if set to high
+static int RR_Recent[MAX_RR_RECENT] = { 212 }; //The 8 latest known intervals between Rpeaks
+static int RR_Recent_OK[MAX_RR_RECENT_OK] = { 212 }; //The 8 latest intervals with Rpeak higher than threshold1
 
 //Estimated value - further explanation in the report
 
-static int x[MAX_X] = { 0 };
+static int x[MAX_X] = { 0 }; //three latest incomming values - needed for peak detection
 
 static int interval = 0;
 static int peak_count = 0;
@@ -172,7 +172,7 @@ int count_peak(){
 }
 
 int count_Rpeak(){
-	return peak_count++;
+	return Rpeak_count++;
 }
 
 int count_interval(){
