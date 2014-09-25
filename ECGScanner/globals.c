@@ -3,7 +3,7 @@
 unsigned long int GLOBAL_COUNT = 0;
 int GLOBAL_SAMPLE_RATE = 250;
 int GLOBAL_SENSOR_ACTIVE = 1;
-char GLOBAL_SENSOR_INPUT[] = "../Testfiles/ECG10800K.txt";
+char GLOBAL_SENSOR_INPUT[] = "../Testfiles/ECG.txt";
 
 static int MAX_COUNT = 64350; //MAX_X * MAX_LOW * MAX_HIGH * MAX_DER * MAX_SQR
 

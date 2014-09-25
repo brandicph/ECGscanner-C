@@ -69,7 +69,9 @@ int detection(int value){
 				int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
 				float pulse = (float)(60.0 * GLOBAL_SAMPLE_RATE / RR);
 
-				//printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
+				printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
+
+				run_TestPeak((Test*)&TEST_RPEAK, "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
 
 				//average temp for moving average calculation
 				RR_Average1_temp = RR;

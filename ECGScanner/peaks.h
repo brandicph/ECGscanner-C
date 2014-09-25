@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "globals.h"
 #include "utils.h"
+#include "test.h"
 
 static int isPeak(int *x);
 static int searchBack();

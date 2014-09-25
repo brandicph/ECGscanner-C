@@ -15,6 +15,6 @@ int main(void)
 
 		global_count();
 	}
-	//testResults();
+	testResults();
 	return 0;
 }
