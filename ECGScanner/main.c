@@ -15,6 +15,8 @@ int main(void)
 
 		global_count();
 	}
-	testResults();
+
+	if (GLOBAL_DEBUG) testResults();
+	
 	return 0;
 }

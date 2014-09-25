@@ -1,4 +1,4 @@
-#include "peaks.h"
+﻿#include "peaks.h"
 
 #define MAX_X 3
 #define MAX_PEAKS 100
@@ -69,9 +69,11 @@ int detection(int value){
 				int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
 				float pulse = (float)(60.0 * GLOBAL_SAMPLE_RATE / RR);
 
-				printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
+				if (GLOBAL_DEBUG) printf("VERBOSE: %d %d %d %0.2f \t", GLOBAL_COUNT, Rpeak, time, pulse);
 
-				run_TestPeak((Test*)&TEST_RPEAK, "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
+				printf("time: %d   \t||\tpulse: <3 %0.2f\n", time, pulse);
+
+				if (GLOBAL_DEBUG) run_TestPeak((Test*)&TEST_RPEAK, "RPEAK", "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
 
 				//average temp for moving average calculation
 				RR_Average1_temp = RR;
@@ -103,18 +105,9 @@ int detection(int value){
 						//keep track of the Rpeaks
 						count_Rpeak();
 						
-					} else {
-						//do nothing
-						//return to start
 					}
-
-				} else {
-					//do nothing
-					//return to start
-				}
-				
+				}				
 			}
-
 		} else {
 			//If peak < THRESHOLD1
 			NPKF = (int)(0.125 * peak + 0.875 * NPKF);
@@ -128,6 +121,16 @@ int detection(int value){
 	return detected;
 }
 
+int isPeak(int value){
+	//because we already added the newest value to the array
+	//the formula need to be like "x[n-2] < x[n-1] > x" instead of "x[n-1] < x > x[n+1]"
+	int xm1 = x[mod(GLOBAL_COUNT - 2, MAX_X)];
+	int xm0 = x[mod(GLOBAL_COUNT - 1, MAX_X)];
+	int xp1 = x[mod(GLOBAL_COUNT, MAX_X)];
+	if (xm1 < xm0 && xm0 > xp1)
+		return 1;
+	return 0;
+}
 
 int searchBack(){
 	int i = 0;
@@ -178,17 +181,6 @@ int count_Rpeak(){
 
 int count_interval(){
 	return interval++;
-}
-
-int isPeak(int value){
-	//because we already added the newest value to the array
-	//the formula need to be like "x[n-2] < x[n-1] > x" instead of "x[n-1] < x > x[n+1]"
-	int xm1 = x[mod(GLOBAL_COUNT - 2, MAX_X)];
-	int xm0 = x[mod(GLOBAL_COUNT - 1, MAX_X)];
-	int xp1 = x[mod(GLOBAL_COUNT, MAX_X)];
-	if (xm1 < xm0 && xm0 > xp1)
-		return 1;
-	return 0;
 }
 
 int calcMovingAvg(int latest_avg, int temp, int value, int N){

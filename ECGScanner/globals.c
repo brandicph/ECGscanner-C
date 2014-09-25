@@ -1,5 +1,7 @@
 #include "globals.h"
 
+int GLOBAL_DEBUG = 1;
+
 unsigned long int GLOBAL_COUNT = 0;
 int GLOBAL_SAMPLE_RATE = 250;
 int GLOBAL_SENSOR_ACTIVE = 1;
