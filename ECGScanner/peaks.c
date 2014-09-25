@@ -37,6 +37,7 @@ int detection(int value){
 
 	//CHECK FOR PEAKS
 	int next = nextValue(value);
+	int detected = 0;
 
 	if (isPeak(next)){
 
@@ -54,19 +55,19 @@ int detection(int value){
 				saveRRInRR_Recent(RR);
 				saveRRInRR_Recent_OK(RR);
 
-				SPKF = 0.125 * peak + 0.875 * SPKF;
+				SPKF = (int)(0.125 * peak + 0.875 * SPKF);
 				RR_Average1 = calcMovingAvg(RR_Average1, RR_Average1_temp, RR, MAX_RR_RECENT);
 				RR_Average2 = calcMovingAvg(RR_Average2, RR_Average2_temp, RR, MAX_RR_RECENT_OK);
 
-				RR_LOW = 0.92 * RR_Average2;
-				RR_HIGH = 1.16 * RR_Average2;
-				RR_MISS = 1.66 * RR_Average2;
+				RR_LOW = (int)(0.92 * RR_Average2);
+				RR_HIGH = (int)(1.16 * RR_Average2);
+				RR_MISS = (int)(1.66 * RR_Average2);
 
-				THRESHOLD1 = NPKF + 0.25 * (SPKF - NPKF);
-				THRESHOLD2 = 0.5 * THRESHOLD1;
+				THRESHOLD1 = (int)(NPKF + 0.25 * (SPKF - NPKF));
+				THRESHOLD2 = (int)(0.5 * THRESHOLD1);
 
 				int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
-				float pulse = (60.0 * GLOBAL_SAMPLE_RATE / RR);
+				float pulse = (float)(60.0 * GLOBAL_SAMPLE_RATE / RR);
 
 				//printf("%d %d %d %0.2f\n", GLOBAL_COUNT, Rpeak, time, pulse);
 
@@ -76,6 +77,7 @@ int detection(int value){
 				//keep track of the Rpeaks
 				count_Rpeak();
 
+				detected = 1;
 			} else {
 				if (RR < RR_MISS){
 					if (searchBack()){
@@ -84,20 +86,21 @@ int detection(int value){
 
 						saveRRInRR_Recent(RR);
 
-						SPKF = 0.25 * peak + 0.75 * SPKF;
+						SPKF = (int)(0.25 * peak + 0.75 * SPKF);
 						RR_Average1 = calcMovingAvg(RR_Average1, RR_Average1_temp, RR, MAX_RR_RECENT);
 
-						RR_LOW = 0.92 * RR_Average2;
-						RR_HIGH = 1.16 * RR_Average2;
-						RR_MISS = 1.66 * RR_Average2;
+						RR_LOW = (int)(0.92 * RR_Average2);
+						RR_HIGH = (int)(1.16 * RR_Average2);
+						RR_MISS = (int)(1.66 * RR_Average2);
 
-						THRESHOLD1 = NPKF + 0.25 * (SPKF - NPKF);
-						THRESHOLD2 = 0.5 * THRESHOLD1;
+						THRESHOLD1 = (int)(NPKF + 0.25 * (SPKF - NPKF));
+						THRESHOLD2 = (int)(0.5 * THRESHOLD1);
 
 						//average temp for moving average calculation
 						RR_Average1_temp = RR;
 						//keep track of the Rpeaks
 						count_Rpeak();
+						
 					} else {
 						//do nothing
 						//return to start
@@ -112,13 +115,15 @@ int detection(int value){
 
 		} else {
 			//If peak < THRESHOLD1
-			NPKF = 0.125 * peak + 0.875 * NPKF;
-			THRESHOLD1 = NPKF + 0.25 * (SPKF - NPKF);
-			THRESHOLD2 = 0.5 * THRESHOLD1;
+			NPKF = (int)(0.125 * peak + 0.875 * NPKF);
+			THRESHOLD1 = (int)(NPKF + 0.25 * (SPKF - NPKF));
+			THRESHOLD2 = (int)(0.5 * THRESHOLD1);
 		}
 		count_peak();
 	}
 	count_interval();
+
+	return detected;
 }
 
 

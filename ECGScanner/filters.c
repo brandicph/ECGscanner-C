@@ -53,12 +53,6 @@ int movingWindow(int ym0, int N){
 	return (ym0 - (squared_old / N) + (squared_new / N));
 }
 
-Test test_low = { .file = NULL, .value = 0, .read = 0, .errors = 0 };
-Test test_high = { .file = NULL, .value = 0, .read = 0, .errors = 0 };
-Test test_der = { .file = NULL, .value = 0, .read = 0, .errors = 0 };
-Test test_sqr = { .file = NULL, .value = 0, .read = 0, .errors = 0 };
-Test test_mwi = { .file = NULL, .value = 0, .read = 0, .errors = 0 };
-
 int filter(int value){
 	x[GLOBAL_COUNT % MAX_X] = value;							//INCOMING VALUE
 	low[GLOBAL_COUNT % MAX_LOW] = lowPassFilter(x, low);		//LOW PASS FILTER
@@ -66,12 +60,14 @@ int filter(int value){
 	der[GLOBAL_COUNT % MAX_DER] = derivativeFilter(high);		//DERIVATIVE FILTER
 	sqr[GLOBAL_COUNT % MAX_SQR] = squaredFilter(der, sqr);		//SQUARED FILTER
 	mwi = movingWindow(mwi, 30);								//MOVING WINDOW INTEGRATION;
-
-	//run_Test((Test*)&test_low, "../Testfiles/x_low.txt", low[GLOBAL_COUNT % MAX_LOW]); //TEST LOW-PASS FILTER
-	//run_Test((Test*)&test_high, "../Testfiles/x_high.txt", high[GLOBAL_COUNT % MAX_HIGH]); //TEST HIGH-PASS FILTER
-	//run_Test((Test*)&test_der, "../Testfiles/x_der.txt", der[GLOBAL_COUNT % MAX_DER]); //TEST DERIVATIVE
-	//run_Test((Test*)&test_sqr, "../Testfiles/x_sqr.txt", sqr[GLOBAL_COUNT % MAX_SQR]); //TEST SQUARE FUNCTION
-	//run_Test((Test*)&test_mwi, "../Testfiles/x_mwi_div_pre.txt", mwi); //TEST MOWING WINDOW INTEGRATION
+	
+	/*
+	run_Test((Test*)&TEST_LOW, "../Testfiles/x_low.txt", low[GLOBAL_COUNT % MAX_LOW]); //TEST LOW-PASS FILTER
+	run_Test((Test*)&TEST_HIGH, "../Testfiles/x_high.txt", high[GLOBAL_COUNT % MAX_HIGH]); //TEST HIGH-PASS FILTER
+	run_Test((Test*)&TEST_DER, "../Testfiles/x_der.txt", der[GLOBAL_COUNT % MAX_DER]); //TEST DERIVATIVE
+	run_Test((Test*)&TEST_SQR, "../Testfiles/x_sqr.txt", sqr[GLOBAL_COUNT % MAX_SQR]); //TEST SQUARE FUNCTION
+	run_Test((Test*)&TEST_MWI, "../Testfiles/x_mwi_div_pre.txt", mwi); //TEST MOWING WINDOW INTEGRATION
+	*/
 
 	return mwi;
 }

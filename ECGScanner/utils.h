@@ -5,6 +5,6 @@
 #include <stdio.h>
 
 //extern void queue(int *queue, int arrSize, int item);
-extern int mod(int a, int b);
+int mod(int a, int b);
 
 #endif

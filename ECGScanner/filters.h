@@ -14,6 +14,6 @@ static int derivativeFilter(int *x);
 static int squaredFilter(int *x);
 static int movingWindow(int ym0, int N);
 
-extern int filter(int value);
+int filter(int value);
 
 #endif

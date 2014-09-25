@@ -20,6 +20,6 @@ static int count_interval();
 static int isPeak(int value);
 static int calcMovingAvg(int latest_avg, int temp, int value, int N);
 
-extern int detection(int value);
+int detection(int value);
 
 #endif
