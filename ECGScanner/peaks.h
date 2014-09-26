@@ -1,12 +1,14 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
+//includes
 #include <stdio.h>
 #include <stdlib.h>
 #include "globals.h"
 #include "utils.h"
 #include "test.h"
 
+//private prototypes
 static int isPeak(int *x);
 static int searchBack();
 static int getPeak();
@@ -21,6 +23,7 @@ static int count_interval();
 static int isPeak(int value);
 static int calcMovingAvg(int latest_avg, int temp, int value, int N);
 
+//public prototypes
 int detection(int value);
 
 #endif

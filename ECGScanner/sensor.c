@@ -1,7 +1,8 @@
 #include "sensor.h"
 
+//Sensor interface
+//This function returns the incoming data
 static FILE *file;
-
 int getNextData(){
 	int value;
 
