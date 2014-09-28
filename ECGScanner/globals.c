@@ -11,6 +11,6 @@ int GLOBAL_SENSOR_ACTIVE = 1;
 char GLOBAL_SENSOR_INPUT[] = "../Testfiles/ECG.txt";
 
 //Global counter
-int global_count(void){
+unsigned long int global_count(void){
 	return GLOBAL_COUNT++;
 }

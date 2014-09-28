@@ -12,6 +12,6 @@ int GLOBAL_SENSOR_ACTIVE;
 char GLOBAL_SENSOR_INPUT[];
 
 //public prototypes
-int global_count();
+unsigned long int global_count();
 
 #endif
