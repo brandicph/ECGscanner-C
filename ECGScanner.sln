@@ -28,6 +28,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{5A
 		Diagrams\QRS_algorithm_flow_chart.pdf = Diagrams\QRS_algorithm_flow_chart.pdf
 		Diagrams\QRS_algorithm_flow_chart.png = Diagrams\QRS_algorithm_flow_chart.png
 		Diagrams\QRS_algorithm_flow_chart.vsdx = Diagrams\QRS_algorithm_flow_chart.vsdx
+		Diagrams\System_details_UML_chart.pdf = Diagrams\System_details_UML_chart.pdf
+		Diagrams\System_details_UML_chart.png = Diagrams\System_details_UML_chart.png
+		Diagrams\System_details_UML_chart.vsdx = Diagrams\System_details_UML_chart.vsdx
+		Diagrams\System_overview_flow_chart.pdf = Diagrams\System_overview_flow_chart.pdf
+		Diagrams\System_overview_flow_chart.png = Diagrams\System_overview_flow_chart.png
+		Diagrams\System_overview_flow_chart.vsdx = Diagrams\System_overview_flow_chart.vsdx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analysis", "Analysis", "{442ACE88-7E0E-4538-B693-082734E56D45}"
