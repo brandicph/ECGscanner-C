@@ -5,32 +5,36 @@
 #define MAX_RR_RECENT 8
 #define MAX_RR_RECENT_OK 8
 
+#define MAX_MISS 5
+#define MIN_RPEAK 2000
+
 
 //Initialize variables
-static int peak				= 0;	//Latest found peak
-static int Rpeak			= 0;	//Latest found Rpeak
-static int SPKF				= 4500;	//Estimated value of a Rpeak
-static int NPKF				= 2000;	//Estimated value of a noise peak
-static int THRESHOLD1		= 2300;	//Lowest threshold of Rpeak
-static int THRESHOLD2		= 1300;	//If threshold1 is too high at searchback
-static int RR				= 0;	//later: Latest time interval from last Rpeak
-static int RR_Average1		= 150;	//later: RR_Recent[0..n]/n
+static int peak = 0;	//Latest found peak
+static int Rpeak = 0;	//Latest found Rpeak
+static int SPKF = 4500;	//Estimated value of a Rpeak
+static int NPKF = 2000;	//Estimated value of a noise peak
+static int THRESHOLD1 = 2300;	//Lowest threshold of Rpeak
+static int THRESHOLD2 = 1300;	//If threshold1 is too high at searchback
+static int RR = 0;	//later: Latest time interval from last Rpeak
+static int RR_Average1 = 150;	//later: RR_Recent[0..n]/n
 static int RR_Average1_temp = 150;	//latest calculated RR_Average1
-static int RR_Average2		= 160;	//later: RR_Recent_OK[0..n]/n
+static int RR_Average2 = 160;	//later: RR_Recent_OK[0..n]/n
 static int RR_Average2_temp = 160;	//latest calculated RR_Average2
-static int RR_LOW			= 120;	//Lowest interval of a Rpeak occurrence
-static int RR_HIGH			= 246;	//Highest interval of a Rpeak occurrence
-static int RR_MISS			= 352;	//If threshold1 if set to high
-static int RR_Recent[MAX_RR_RECENT]			= { 100, 100, 100, 100, 100, 100, 100, 100 }; //The 8 latest known intervals between Rpeaks
-static int RR_Recent_OK[MAX_RR_RECENT_OK]	= { 212, 212, 212, 212, 212, 212, 212, 212 }; //The 8 latest intervals with Rpeak higher than threshold1
+static int RR_LOW = 120;	//Lowest interval of a Rpeak occurrence
+static int RR_HIGH = 246;	//Highest interval of a Rpeak occurrence
+static int RR_MISS = 352;	//If threshold1 if set to high
+static int RR_Recent[MAX_RR_RECENT] = { 100, 100, 100, 100, 100, 100, 100, 100 }; //The 8 latest known intervals between Rpeaks
+static int RR_Recent_OK[MAX_RR_RECENT_OK] = { 212, 212, 212, 212, 212, 212, 212, 212 }; //The 8 latest intervals with Rpeak higher than threshold1
 
 
 static int x[MAX_X] = { 0 }; //three latest incomming values - needed for peak detection
 static int PEAKS[MAX_PEAKS]; //List of all peaks
 
-static int interval			= 0;
-static int peak_count		= 0;
-static int Rpeak_count		= 0;
+static int interval = 0;
+static int peak_count = 0;
+static int Rpeak_count = 0;
+static int miss_count = 0;
 
 int detection(int value){
 
@@ -51,6 +55,11 @@ int detection(int value){
 
 				Rpeak = peak;
 
+				if (Rpeak < MIN_RPEAK){
+					printWarning("Your blood pressure critically low!");
+				}
+				printStatus(RR, Rpeak);
+
 				saveRRInRR_Recent(RR);
 				saveRRInRR_Recent_OK(RR);
 
@@ -65,27 +74,28 @@ int detection(int value){
 				THRESHOLD1 = (int)(NPKF + 0.25 * (SPKF - NPKF));
 				THRESHOLD2 = (int)(0.5 * THRESHOLD1);
 
-				int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
-				float pulse = (float)(60.0 * GLOBAL_SAMPLE_RATE / RR);
-
-				if (GLOBAL_DEBUG) printf("VERBOSE: %d %d %d %0.2f \t", GLOBAL_COUNT, Rpeak, time, pulse);
-
-				printf("time: %d   \t||\tpulse: <3 %0.2f\n", time, pulse);
-
-				if (GLOBAL_TEST) run_TestPeak((Test*)&TEST_RPEAK, "RPEAK", "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
-
 				//average temp for moving average calculation
 				RR_Average1_temp = RR;
 				RR_Average2_temp = RR;
 				//keep track of the Rpeaks
 				count_Rpeak();
 
+				miss_count = 0;
 				detected = 1;
-			} else {
+			}
+			else {
+				count_miss();
+				if (miss_count >= MAX_MISS){
+					printWarning("You have an irregular heartbeat");
+				}
 				if (RR < RR_MISS){
 					if (searchBack()){
 
 						Rpeak = peak;
+
+						if (Rpeak < MIN_RPEAK){
+							printWarning("Your blood pressure critically low!");
+						}
 
 						saveRRInRR_Recent(RR);
 
@@ -103,11 +113,12 @@ int detection(int value){
 						RR_Average1_temp = RR;
 						//keep track of the Rpeaks
 						count_Rpeak();
-						
+
 					}
-				}				
+				}
 			}
-		} else {
+		}
+		else {
 			//If peak < THRESHOLD1
 			NPKF = (int)(0.125 * peak + 0.875 * NPKF);
 			THRESHOLD1 = (int)(NPKF + 0.25 * (SPKF - NPKF));
@@ -118,6 +129,20 @@ int detection(int value){
 	count_interval();
 
 	return detected;
+}
+
+
+void printWarning(char *message){
+	if (GLOBAL_DEBUG) printf("VERBOSE - WARING: %ld %ld \t", GLOBAL_COUNT, Rpeak);
+	printf("***WARNING: %s\n", message);
+}
+
+void printStatus(int RR, int Rpeak){
+	int time = (GLOBAL_COUNT / GLOBAL_SAMPLE_RATE);
+	float pulse = (float)(60.0 * GLOBAL_SAMPLE_RATE / RR);
+
+	if (GLOBAL_DEBUG) printf("VERBOSE - STATUS: %ld %ld \t", GLOBAL_COUNT, Rpeak);
+	printf("time: %ld   \t||\tpulse: <3 %0.2f\n", time, pulse);
 }
 
 int isPeak(int value){
@@ -168,6 +193,10 @@ int calculateRR(){
 	int temp = interval;
 	interval = 0;
 	return temp;
+}
+
+int count_miss(){
+	return miss_count++;
 }
 
 int count_peak(){

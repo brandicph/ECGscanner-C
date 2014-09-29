@@ -17,11 +17,15 @@ static void saveRRInRR_Recent(int RR);
 static void saveRRInRR_Recent_OK(int RR);
 static void savePeak(int peak);
 static int calculateRR();
+static int count_miss();
 static int count_peak();
 static int count_Rpeak();
 static int count_interval();
 static int isPeak(int value);
 static int calcMovingAvg(int latest_avg, int temp, int value, int N);
+
+static void printWarning(char *message);
+static void printStatus(int RR, int Rpeak);
 
 //public prototypes
 int detection(int value);
