@@ -31,7 +31,6 @@ static int PEAKS[MAX_PEAKS]; //List of all peaks
 static int interval			= 0;
 static int peak_count		= 0;
 static int Rpeak_count		= 0;
-static int threshold_count	= 0;
 
 int detection(int value){
 
