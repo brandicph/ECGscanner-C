@@ -6,6 +6,7 @@
 
 //public variables
 int GLOBAL_DEBUG;
+int GLOBAL_TEST;
 unsigned long int GLOBAL_COUNT;
 int GLOBAL_SAMPLE_RATE;
 int GLOBAL_SENSOR_ACTIVE;

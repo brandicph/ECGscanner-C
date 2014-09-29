@@ -2,7 +2,11 @@
 
 //Debug switch
 //1 = debug || 0 = off
-int GLOBAL_DEBUG = 1;
+int GLOBAL_DEBUG = 0;
+
+//Test switch
+//1 = test || 0 = off
+int GLOBAL_TEST = 1;
 
 //Global variables
 unsigned long int GLOBAL_COUNT = 0;

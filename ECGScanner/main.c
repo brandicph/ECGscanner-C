@@ -23,7 +23,7 @@ int main(void)
 		global_count();
 	}
 
-	if (GLOBAL_DEBUG) testResults(); //Print test results
+	if (GLOBAL_TEST) testResults(); //Print test results
 	
 	return 0;
 }

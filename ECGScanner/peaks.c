@@ -72,7 +72,7 @@ int detection(int value){
 
 				printf("time: %d   \t||\tpulse: <3 %0.2f\n", time, pulse);
 
-				if (GLOBAL_DEBUG) run_TestPeak((Test*)&TEST_RPEAK, "RPEAK", "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
+				if (GLOBAL_TEST) run_TestPeak((Test*)&TEST_RPEAK, "RPEAK", "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
 
 				//average temp for moving average calculation
 				RR_Average1_temp = RR;

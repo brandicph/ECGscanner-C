@@ -74,7 +74,7 @@ int filter(int value){
 	sqr[GLOBAL_COUNT % MAX_SQR] = squaredFilter(der, sqr);		//SQUARED FILTER
 	mwi = movingWindow(mwi, 30);								//MOVING WINDOW INTEGRATION;
 	
-	if (GLOBAL_DEBUG) {
+	if (GLOBAL_TEST) {
 		run_TestFilter((Test*)&TEST_LOW, "LOW", "../Testfiles/x_low.txt", low[GLOBAL_COUNT % MAX_LOW]);			//TEST LOW-PASS FILTER
 		run_TestFilter((Test*)&TEST_HIGH, "HIGH", "../Testfiles/x_high.txt", high[GLOBAL_COUNT % MAX_HIGH]);	//TEST HIGH-PASS FILTER
 		run_TestFilter((Test*)&TEST_DER, "DER", "../Testfiles/x_der.txt", der[GLOBAL_COUNT % MAX_DER]);			//TEST DERIVATIVE
