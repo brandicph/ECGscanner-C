@@ -18,20 +18,26 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="filter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="filters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="peaks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="filter.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,6 +45,18 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="sensor.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="globals.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="filters.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="peaks.c">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>

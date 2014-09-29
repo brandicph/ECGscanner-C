@@ -1,22 +1,70 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ECGScanner", "ECGScanner\ECGScanner.vcxproj", "{DF73237A-4E96-4BA4-BEBB-5FB749C83264}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testfiles", "Testfiles", "{7C5C0D80-9ADE-455C-A7C0-B9BA9FA0D868}"
+	ProjectSection(SolutionItems) = preProject
+		Testfiles\ECG.txt = Testfiles\ECG.txt
+		Testfiles\ECG10800K.txt = Testfiles\ECG10800K.txt
+		Testfiles\ECG2700K.txt = Testfiles\ECG2700K.txt
+		Testfiles\ECG5400K.txt = Testfiles\ECG5400K.txt
+		Testfiles\ECG8100K.txt = Testfiles\ECG8100K.txt
+		Testfiles\ECG900K.txt = Testfiles\ECG900K.txt
+		Testfiles\Rpeak.txt = Testfiles\Rpeak.txt
+		Testfiles\x_der.txt = Testfiles\x_der.txt
+		Testfiles\x_high.txt = Testfiles\x_high.txt
+		Testfiles\x_low.txt = Testfiles\x_low.txt
+		Testfiles\x_mwi.txt = Testfiles\x_mwi.txt
+		Testfiles\x_mwi_div_after.txt = Testfiles\x_mwi_div_after.txt
+		Testfiles\x_mwi_div_pre.txt = Testfiles\x_mwi_div_pre.txt
+		Testfiles\x_sqr.txt = Testfiles\x_sqr.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagrams", "Diagrams", "{5A4BCF03-59F3-4C1C-BE84-57116723E6BA}"
+	ProjectSection(SolutionItems) = preProject
+		Diagrams\QRS_algorithm_flow_chart.pdf = Diagrams\QRS_algorithm_flow_chart.pdf
+		Diagrams\QRS_algorithm_flow_chart.png = Diagrams\QRS_algorithm_flow_chart.png
+		Diagrams\QRS_algorithm_flow_chart.vsdx = Diagrams\QRS_algorithm_flow_chart.vsdx
+		Diagrams\System_details_UML_chart.pdf = Diagrams\System_details_UML_chart.pdf
+		Diagrams\System_details_UML_chart.png = Diagrams\System_details_UML_chart.png
+		Diagrams\System_details_UML_chart.vsdx = Diagrams\System_details_UML_chart.vsdx
+		Diagrams\System_overview_flow_chart.pdf = Diagrams\System_overview_flow_chart.pdf
+		Diagrams\System_overview_flow_chart.png = Diagrams\System_overview_flow_chart.png
+		Diagrams\System_overview_flow_chart.vsdx = Diagrams\System_overview_flow_chart.vsdx
+		Diagrams\System_overview_UML_chart.pdf = Diagrams\System_overview_UML_chart.pdf
+		Diagrams\System_overview_UML_chart.png = Diagrams\System_overview_UML_chart.png
+		Diagrams\System_overview_UML_chart.vsdx = Diagrams\System_overview_UML_chart.vsdx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analysis", "Analysis", "{442ACE88-7E0E-4538-B693-082734E56D45}"
+	ProjectSection(SolutionItems) = preProject
+		Analysis\ECGScannerProfiling2509141000.vsps = Analysis\ECGScannerProfiling2509141000.vsps
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
 		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Debug|Win32.ActiveCfg = Debug|Win32
 		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Debug|Win32.Build.0 = Debug|Win32
+		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Debug|x64.ActiveCfg = Debug|x64
+		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Debug|x64.Build.0 = Debug|x64
 		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Release|Win32.ActiveCfg = Release|Win32
 		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Release|Win32.Build.0 = Release|Win32
+		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Release|x64.ActiveCfg = Release|x64
+		{DF73237A-4E96-4BA4-BEBB-5FB749C83264}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
