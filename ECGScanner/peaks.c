@@ -142,6 +142,7 @@ void printStatus(int RR, int Rpeak){
 	float pulse = (float)(60.0 * GLOBAL_SAMPLE_RATE / RR);
 
 	if (GLOBAL_DEBUG) printf("VERBOSE - STATUS: %ld %ld \t", GLOBAL_COUNT, Rpeak);
+	if (GLOBAL_TEST) run_TestPeak((Test*)&TEST_RPEAK, "RPEAK", "../Testfiles/Rpeak.txt", GLOBAL_COUNT, Rpeak); //TEST LOW-PASS FILTER
 	printf("time: %ld   \t||\tpulse: <3 %0.2f\n", time, pulse);
 }
 
